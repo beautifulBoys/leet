@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>三数之和</title>
+</head>
+
+<body>
+  <script>
+    /*
+    给定一个整数数组和一个目标值，找出数组中和为目标值的三个数。
+
+    示例:
+
+    给定 nums = [2, 7, 11, 15]
+    因为 nums[0] + nums[1] = 2 + 7 = 9
+    所以返回 [0, 1]
+    */
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+  nums = nums.sort()
+  let arr = [], map = {}
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      for (let k = j + 1; k < nums.length; k++) {
+        if (nums[i] + nums[j] + nums[k] === target) {
+          if (!map[nums[i] + '-' + nums[j]]) {
+            map[nums[i] + '-' + nums[j] + '-' + nums[k]] = true
+            arr.push([nums[i], nums[j], nums[k]])
+          }
+        }
+      }
+    }
+  }
+  return arr
+}
+let result = twoSum([-1,0,1,2,-1,-4], 0)
+console.log(result)
+  </script>
+</body>
+
+</html>
