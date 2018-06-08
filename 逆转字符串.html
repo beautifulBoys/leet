@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>逆转字符串</title>
+</head>
+
+<body>
+  <script>
+    /*
+        Given a 32-bit signed integer, reverse digits of an integer.
+
+        Example 1:
+
+        Input: 123
+        Output: 321
+        Example 2:
+
+        Input: -123
+        Output: -321
+        Example 3:
+
+        Input: 120
+        Output: 21
+    */
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+    var reverse = function (x) {
+      
+      // if (x > Math.pow(2, 31) - 1 || x < -Math.pow(2, 31)) {
+      //   return 0
+      // }
+      if (x > 0) {
+        x = x.toString().split('').reverse().join('') - 0
+      } else {
+        x = x.toString().replace('-', '').split('').reverse().join('')
+        x = '-' + x - 0
+      }
+      if (x > Math.pow(2, 31) - 1 || x < -Math.pow(2, 31)) {
+        x = 0
+      }
+      return x
+
+    }
+    let result = reverse(1534236469)
+    console.log(result)
+  </script>
+</body>
+
+</html>

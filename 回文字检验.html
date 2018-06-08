@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>逆转字符串</title>
+</head>
+
+<body>
+  <script>
+    /*
+        判断一个整数是否为回文。一个整数是回文时，读取相同的落后了。
+
+例1：
+
+Input: 121
+Output: true
+例2.：
+
+Input: -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+例3.：
+
+Input: 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+    */
+
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+
+    var isPalindrome = function(x) {
+      x = x.toString()
+      let str = x.split('').reverse().join('')
+      return str === x
+    };
+    let result = isPalindrome(1534236469)
+    console.log(result)
+  </script>
+</body>
+
+</html>
