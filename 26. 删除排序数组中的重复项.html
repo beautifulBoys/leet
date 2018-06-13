@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>26. 删除排序数组中的重复项</title>
+</head>
+
+<body>
+  <script>
+  // 26. 删除排序数组中的重复项
+  var removeDuplicates1 = function(nums) {
+    let d = 0 // k 和 d 对应
+    let k = nums[0] // k 和 d 对应
+    let i = 1
+    while (i < nums.length) {
+      if (nums[i] === k) {
+        i++
+      } else {
+        k = nums[i]
+        nums[d + 1] = nums[i]
+        d++
+      }
+    }
+    return d + 1
+  }
+  var removeDuplicates2 = function(nums) {
+    let i = 1
+    while (i < nums.length) {
+      if (nums[i] === nums[i - 1]) {
+        nums.splice(i, 1)
+      } else {
+        i++
+      }
+    }
+    return nums.length
+  }
+let res1 = removeDuplicates1([1, 1, 1, 2, 3, 3, 5, 8, 8])
+let res2 = removeDuplicates2([1, 1, 1, 2, 3, 3, 5, 8, 8])
+console.log(res1, res2);
+
+  </script>
+</body>
+
+</html>

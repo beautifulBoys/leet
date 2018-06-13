@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>38. 报数</title>
+</head>
+
+<body>
+  <script>
+  /*
+        1. 1
+        2. 11
+        3. 21
+        4. 1211
+        5. 111221
+        6.
+  */
+  function getValue (str) { // 1211
+    let s = '', // 配套使用
+    num = 0, // 配套使用
+    result = ''
+    for (let i = 0; i < str.length; i++) {
+      if (!s) {
+        s = str[i]
+        num++
+      } else {
+        if (s === str[i]) {
+          num++
+        } else {
+          result += num.toString() + s
+          num = 1
+          s = str[i]
+        }
+      }
+    }
+    result += num.toString() + s
+    return result
+  }
+  // 27. 移除元素
+  var countAndSay = function (n) {
+    let obj = {
+      1: '1',
+      2: '11',
+      3: '21',
+      4: '1211',
+      5: '111221'
+    }
+    let i = 6
+    let result = ''
+    if (!obj[n]) {
+      while (i <= n) {
+        obj[i] = getValue(obj[i - 1])
+        i++
+      }
+    }
+    return obj[n]
+  };
+
+  let res = countAndSay(10)
+  console.log(res);
+
+  </script>
+</body>
+
+</html>

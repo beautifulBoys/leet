@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>27. 移除元素</title>
+</head>
+
+<body>
+  <script>
+  // 27. 移除元素
+  var removeElement = function(nums, val) {
+    let i = 0
+    while (i < nums.length) {
+      if (nums[i] === val) {
+        nums.splice(i, 1)
+      } else {
+        i++
+      }
+    }
+    return nums.length
+  };
+
+  let res = removeElement([1, 1, 1, 2, 3, 3, 5, 8, 8], 3)
+  console.log(res);
+
+  </script>
+</body>
+
+</html>

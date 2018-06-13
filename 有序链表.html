@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>有序链表</title>
+</head>
+
+<body>
+  <script>
+  // 合并两个有序链表
+
+   function Node (val) {
+     this.val = val
+     this.next = null;
+   }
+
+   function List() {
+     this.next = null
+     this.length = 0
+
+   }
+   List.prototype.append = function (val) {
+     let node = new Node(val)
+     if (!this.next) {
+       this.next = node
+     } else {
+       let current = this.next
+       while (current && current.next) {
+         current = current.next
+       }
+       current.next = node
+     }
+     this.length++
+   }
+  /**
+   * @param {ListNode} l1
+   * @param {ListNode} l2
+   * @return {ListNode}
+   */
+   function listToArr (list) {
+     let arr = []
+     let current = list.next
+     while (current && current.next) {
+       arr.push(current.val)
+       current = current.next
+     }
+     arr.push(current.val)
+     return arr
+
+   }
+  var mergeTwoLists = function(l1, l2) {
+    let arr = [], arr1 = listToArr(l1), arr2 = listToArr(l2), list = new List()
+    arr = [...arr1, ...arr2].sort((a, b) => (a > b))
+    arr.forEach(item => {
+      list.append(item)
+    })
+    return list
+
+  };
+
+  let arr1 = [2, 4, 6, 9]
+  let list1 = new List()
+  arr1.forEach(item => {
+    list1.append(item)
+  })
+
+  let arr2 = [3, 6, 9, 10]
+  let list2 = new List()
+  arr2.forEach(item => {
+    list2.append(item)
+  })
+
+
+
+  let res = mergeTwoLists(list1, list2)
+  console.log(res)
+
+  </script>
+</body>
+
+</html>
