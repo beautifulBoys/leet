@@ -1,0 +1,7 @@
+#修改历史的OpenSSL文件设置备份
+mv /usr/bin/openssl /usr/bin/openssl.old mv /usr/include/openssl /usr/include/openssl.old
+#设置软连接使其使用新的OpenSSL版本 刚刚安装的OpenSSL默认安装在/usr/local/ssl
+ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl
+ln -s /usr/local/ssl/include/openssl /usr/include/openssl
+#更新动态链接库数据
+echo "/usr/local/ssl/lib" >> /etc/ld.so.conf ldconfig -v
