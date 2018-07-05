@@ -28,40 +28,41 @@
                           words = ["word","student"]
                           输出: []
                   */
-
-    var count = 0;
-
-    function show(arr) {
-      document.write("P<sub>" + ++count + "</sub>: " + arr + "<br />");
-    }
-
-    function perm(arr) {
-      let res = []
-      (function fn(source, result) {
-        if (source.length == 0)
-          res.push(result)
-        else
-          for (var i = 0; i < source.length; i++) {
-            fn(source.slice(0, i).concat(source.slice(i + 1)), result.concat(source[i]))
+    function permute (nums) {
+      nums = Array.from(new Set(nums))
+      var permuteArr = []
+      let temArr = []
+      function innerPermute (temArr) {
+        for (var i = 0, len = nums.length; i < len; i++) {
+          if(temArr.length == len - 1) {
+            if(temArr.indexOf(nums[i]) < 0) {
+               permuteArr.push(temArr.concat(nums[i]))
+            }
+            continue
           }
-      })(arr, [])
-      console.log(res);
+          if(temArr.indexOf(nums[i]) < 0) {
+            innerPermute(temArr.concat(nums[i]))
+          }
+        }
+      }
+      innerPermute(temArr)
+      return permuteArr
     }
 
-    let res = perm(["word", "good", "best", "word"])
-    // var findSubstring = function(s, words) {
-    //   let obj = {}
-    //   let arr = permute([], words)
-    //   console.log(words, arr)
-    //   // for (let i = 0; i < arr.length; i++) {
-    //   //   let str =
-    //   //   if (s.indexOf(str) != -1) {
-    //   //     arr.push(s.indexOf(k))
-    //   //   }
-    //   // }
-    //   // return [...new Set(arr)]
-    // }
-    // let res = findSubstring("wordgoodgoodgoodbestword", ["word", "good", "best", "word"])
+
+    function findSubstring (s, words) {
+      let obj = {}
+      let arr = permute(words)
+      let res = []
+      for (let i = 0; i < arr.length; i++) {
+        let str = arr[i].join('')
+        if (s.indexOf(str) != -1) {
+          res.push(s.indexOf(str))
+        }
+      }
+      return Array.from(new Set(res))
+    }
+    let res = findSubstring("barfoothefoobarman", ["foo","bar"])
     console.log(res)
   </script>
 </body>

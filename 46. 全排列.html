@@ -24,9 +24,29 @@
                 [3,2,1]
               ]
     */
-    function permute (nums) {
 
+    function permute (nums) {
+      var permuteArr = []
+      let temArr = []
+      function innerPermute (temArr) {
+        for (var i = 0, len = nums.length; i < len; i++) {
+          if(temArr.length == len - 1) {
+            if(temArr.indexOf(nums[i]) < 0) {
+               permuteArr.push(temArr.concat(nums[i]))
+            }
+            continue
+          }
+          if(temArr.indexOf(nums[i]) < 0) {
+            innerPermute(temArr.concat(nums[i]))
+          }
+        }
+      }
+      innerPermute(temArr)
+      return permuteArr
     }
+
+    var res = permute([1, 2, 3, 4])
+    console.log(res)
   </script>
 </body>
 
